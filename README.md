@@ -55,3 +55,4 @@ Standard notebook:
 <img aling="center" src="diffusion_parallel_julia-vs-c_speedup.svg" alt="diffusion_parallel_julia-vs-c_speedup" width="400"/>
 </p>
 
+TODO: draw error bars

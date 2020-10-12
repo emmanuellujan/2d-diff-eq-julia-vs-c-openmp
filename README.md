@@ -16,7 +16,7 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
   
 # Snippets of the parallel region
 
-- Julia
+- Julia:
 
   ```julia
   for k = 1:it_max

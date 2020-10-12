@@ -1,5 +1,4 @@
-# Julia vs C/OpenMP for 2D stationary diffusion equation
-
+# A simple comparison of Julia and C/OpenMP for the solution of the 2D stationary diffusion equation
 
 In this simple code a 2D stationary diffusion equation is solved using the finite difference method.
 

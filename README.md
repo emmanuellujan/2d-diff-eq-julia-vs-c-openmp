@@ -13,6 +13,30 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
   - u(t,x=1,y) = 0
   - u(t,x,y=0) = 1
   - u(t,x,y=1) = 0
+  
+# Snippets of the parallel region
+
+- Julia
+
+  ```julia
+  for k = 1:it_max
+      @threads for j = 2:n-1
+          for i = 2:n-1
+              u[i,j] = (u[i+1,j]+u[i-1,j]+u[i,j+1]+u[i,j-1])/4.0
+          end
+      end
+  end
+  ```
+  
+- C/OpenMP:
+
+  ```c
+  for(int k=0;k<it_max;k++)
+          #pragma omp parallel for collapse(2) schedule(guided)
+          for(int i=1;i<n-1;i++)
+              for(int j=1;j<n-1;j++)         
+                  u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
+  ```
 
 # Hardware
 

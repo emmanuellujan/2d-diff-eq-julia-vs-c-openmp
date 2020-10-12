@@ -38,13 +38,15 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
                   u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
   ```
 
+Note: ``it_max = 100``, ``n = 2500``
+
 ## Hardware
 
 Standard notebook:
   - Memory: 7.6 GiB
   - Processor: Intel® Core™ i5-8250U CPU @ 1.60GHz × 8 
   - OS Name: Ubuntu 20.04.1 LTS (64 bits)
-  - Disck Capacity: 256.1 GB
+  - Disk Capacity: 256.1 GB
 
 ## Results
 

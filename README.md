@@ -4,7 +4,7 @@ In this simple code a 2D stationary diffusion equation is solved using the finit
 
 Time and Speedup are calculated using a Julia implementation and a C/OpenMP implementation.
 
-# Mathematical problem
+## Mathematical problem
 
 - Equation: d2u/dx2 + d2u/dy2 = 0
 - Initial condition: u(t=0,x,y) = 0
@@ -14,7 +14,7 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
   - u(t,x,y=0) = 1
   - u(t,x,y=1) = 0
   
-# Snippets of the parallel region
+## Snippets of the parallel region
 
 - Julia:
 
@@ -38,7 +38,7 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
                   u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
   ```
 
-# Hardware
+## Hardware
 
 Standard notebook:
   - Memory: 7.6 GiB
@@ -46,7 +46,7 @@ Standard notebook:
   - OS Name: Ubuntu 20.04.1 LTS (64 bits)
   - Disck Capacity: 256.1 GB
 
-# Results
+## Results
 
 <p align="center">
 <img aling="center" src="diffusion_parallel_julia-vs-c_time.svg" alt="diffusion_parallel_julia-vs-c_time" width="400"/>

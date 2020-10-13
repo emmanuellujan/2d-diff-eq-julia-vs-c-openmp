@@ -40,10 +40,10 @@ In ``run-experiments.sh`` you can set the experiment parameters:
 
 ```shell
 # Experiment parameters
-export NUM_THREADS=8
-export NUM_MEASUREMENTS=30
-export NUM_CONVERGENCE_IT=100000
-export NUM_MESH_NODES=400000
+export NUM_THREADS=8 # Range to be evaluated: 1..NUM_THREADS
+export NUM_MEASUREMENTS=30 # No. of measurements per each thread experiment
+export NUM_CONVERGENCE_IT=100000 # No. of convergence iterations
+export NUM_MESH_NODES=4000000 # No. of mesh nodes
 ```
 
 Then you need to run the script in the GNU/Linux terminal:

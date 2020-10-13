@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Experiment parameters
-export NUM_THREADS=8
-export NUM_MEASUREMENTS=10 #30
-export NUM_CONVERGENCE_IT=100 #100000
-export NUM_MESH_NODES=6500000 #4000000
+export NUM_THREADS=8 # Range to be evaluated: 1..NUM_THREADS
+export NUM_MEASUREMENTS=10 # No. of measurements per each thread experiment
+export NUM_CONVERGENCE_IT=100 # No. of convergence iterations
+export NUM_MESH_NODES=6500000 # No. of mesh nodes
 
 # Clear data files and compile C code
 rm -rf *.dat *.png

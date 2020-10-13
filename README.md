@@ -63,7 +63,7 @@ $ ./run-experiments.sh
 export NUM_THREADS=8
 export NUM_MEASUREMENTS=10
 export NUM_CONVERGENCE_IT=100
-export NUM_MESH_NODES=4000000
+export NUM_MESH_NODES=6500000
 ```
 
 ### Software/Hardware
@@ -84,7 +84,7 @@ These experiments were executed on a conventional notebook:
 <img aling="center" src="diffusion-on-a-plate.png" alt="diffusion-on-a-plate" width="400"/>
 </p>
 
-Note: the heatmap figure was computed using 100000 convergence iterations
+<sup>Note: the heatmap figure was computed using 500000 convergence iterations instead of 100.</sup>
 
 
 ## Case 2: TODO

@@ -8,11 +8,7 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
 
 - Equation: d2u/dx2 + d2u/dy2 = 0
 - Initial condition: u(t=0,x,y) = 0
-- Boundary conditions:
-  - u(t,x=0,y) = 0
-  - u(t,x=1,y) = 0
-  - u(t,x,y=0) = 1
-  - u(t,x,y=1) = 0
+- Boundary conditions: u(t,x=0,y) = 0, u(t,x=1,y) = 0, u(t,x,y=0) = 1, u(t,x,y=1) = 0
   
 ## Snippets of the parallel region
 
@@ -40,9 +36,27 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
 
 Note: ``it_max = 100``, ``n = 2500``
 
+## How to run
+
+In ``run-experiments.sh`` you can set the experiment parameters:
+
+```shell
+# Experiment parameters
+export NUM_MAX_THREADS=8
+export NUM_MEASUREMENTS=10
+export NUM_MAX_CONV_IT=100
+export NUM_MESH_NODES=6500000
+```
+
+Then you need to run the script in the GNU/Linux terminal:
+
+```shell
+$ ./run-experiments.sh
+```
+
 ## Hardware
 
-Standard notebook:
+These experiments were executed on a conventional notebook:
   - Memory: 7.6 GiB
   - Processor: Intel® Core™ i5-8250U CPU @ 1.60GHz × 8 
   - OS Name: Ubuntu 20.04.1 LTS (64 bits)
@@ -53,6 +67,5 @@ Standard notebook:
 <p align="center">
 <img aling="center" src="diffusion_parallel_julia-vs-c_time.svg" alt="diffusion_parallel_julia-vs-c_time" width="400"/>
 <img aling="center" src="diffusion_parallel_julia-vs-c_speedup.svg" alt="diffusion_parallel_julia-vs-c_speedup" width="400"/>
+<img aling="center" src="diffusion-on-a-plate.png" alt="diffusion-on-a-plate" width="400"/>
 </p>
-
-TODO: draw error bars

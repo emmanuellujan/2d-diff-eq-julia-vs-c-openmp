@@ -3,6 +3,7 @@
 #include <time.h>
 #include <omp.h>
 #include <math.h>
+#include <unistd.h>
 
 /*******************************************************************************
 *   In this simple code a 2D stationary diffusion equation is solved using
@@ -19,9 +20,9 @@
 *           u(t,x,y=1) = 0
 *
 *   How to run:
+*            gcc -o diffusion-parallel -fopenmp diffusion-parallel.c -lm
 *            export OMP_NUM_THREADS=8;
-*            gcc -o diffusion_parallel_test -fopenmp diffusion_parallel_test.c
-*            ./diffusion_parallel_test 100000 4000000
+*            ./diffusion-parallel 100000 4000000
 *
 *           Note: first parameter is the number of convergence iterations
 *                 second parameter is the number of mesh nodes
@@ -63,6 +64,21 @@ int main(int argc, char **argv)
 
     // Print result
     printf("%f\n",end - start);
+    
+    // Save CSV
+
+    const char *fname = "heatmap-c.csv";
+    if( access( fname, F_OK ) == -1 )
+    {
+        FILE *heatmap = fopen(fname, "w"); 
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n-1;j++)
+                fprintf(heatmap, "%lf,", u[i*n+j]);
+            fprintf(heatmap, "%lf\n", u[i*n+n-1]);
+        }
+        fclose(heatmap); 
+    }
 
     free(u);
     return 0;

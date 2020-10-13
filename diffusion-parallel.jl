@@ -16,7 +16,7 @@ using .Threads
 #
 #   How to run:
 #           export JULIA_NUM_THREADS=8;
-#           julia diffusion_parallel_test.jl 100000 4000000
+#           julia diffusion-parallel.jl 100000 4000000
 #
 #           Note: first parameter is the number of convergence iterations
 #                 second parameter is the number of mesh nodes
@@ -50,10 +50,9 @@ t = @elapsed solve_diff!(u,n,it_max)
 
 println(t)
 
-filename = "diffusion-on-a-plate.png"
+filename = "heatmap-julia.csv"
 if !isfile(filename)
-    using Plots
-    heatmap(u)
-    savefig(filename)
+    using CSV, DataFrames
+    CSV.write(filename,  DataFrame(u), writeheader=false)
 end
 

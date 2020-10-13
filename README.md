@@ -28,13 +28,11 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
 
   ```c
   for(int k=0;k<it_max;k++)
-          #pragma omp parallel for collapse(2) schedule(guided)
-          for(int i=1;i<n-1;i++)
-              for(int j=1;j<n-1;j++)         
-                  u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
+      #pragma omp parallel for collapse(2) schedule(guided)
+      for(int i=1;i<n-1;i++)
+          for(int j=1;j<n-1;j++)         
+              u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
   ```
-
-Note: ``it_max = 100``, ``n = 2500``
 
 ## How to run
 

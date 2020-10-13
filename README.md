@@ -28,13 +28,11 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
 
   ```c
   for(int k=0;k<it_max;k++)
-          #pragma omp parallel for collapse(2) schedule(guided)
-          for(int i=1;i<n-1;i++)
-              for(int j=1;j<n-1;j++)         
-                  u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
+      #pragma omp parallel for collapse(2) schedule(guided)
+      for(int i=1;i<n-1;i++)
+          for(int j=1;j<n-1;j++)         
+              u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
   ```
-
-Note: ``it_max = 100``, ``n = 2500``
 
 ## How to run
 
@@ -63,7 +61,7 @@ $ ./run-experiments.sh
 export NUM_THREADS=8
 export NUM_MEASUREMENTS=10
 export NUM_CONVERGENCE_IT=100
-export NUM_MESH_NODES=4000000
+export NUM_MESH_NODES=6500000
 ```
 
 ### Software/Hardware
@@ -84,7 +82,7 @@ These experiments were executed on a conventional notebook:
 <img aling="center" src="diffusion-on-a-plate.png" alt="diffusion-on-a-plate" width="400"/>
 </p>
 
-Note: the heatmap figure was computed using 100000 convergence iterations
+<sup>Note: the heatmap figure was computed using 500000 convergence iterations instead of 100.</sup>
 
 
 ## Case 2: TODO

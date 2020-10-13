@@ -8,11 +8,7 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
 
 - Equation: d2u/dx2 + d2u/dy2 = 0
 - Initial condition: u(t=0,x,y) = 0
-- Boundary conditions:
-  - u(t,x=0,y) = 0
-  - u(t,x=1,y) = 0
-  - u(t,x,y=0) = 1
-  - u(t,x,y=1) = 0
+- Boundary conditions: u(t,x=0,y) = 0, u(t,x=1,y) = 0, u(t,x,y=0) = 1, u(t,x,y=1) = 0
   
 ## Snippets of the parallel region
 
@@ -40,19 +36,55 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
 
 Note: ``it_max = 100``, ``n = 2500``
 
-## Hardware
+## How to run
 
-Standard notebook:
+In ``run-experiments.sh`` you can set the experiment parameters:
+
+```shell
+# Experiment parameters
+export NUM_THREADS=8
+export NUM_MEASUREMENTS=30
+export NUM_CONVERGENCE_IT=100000
+export NUM_MESH_NODES=400000
+```
+
+Then you need to run the script in the GNU/Linux terminal:
+
+```shell
+$ ./run-experiments.sh
+```
+
+## Case 1: Regular Notebook
+
+### Experiment parameters
+
+```shell
+# Experiment parameters
+export NUM_THREADS=8
+export NUM_MEASUREMENTS=10
+export NUM_CONVERGENCE_IT=100
+export NUM_MESH_NODES=4000000
+```
+
+### Software/Hardware
+
+These experiments were executed on a conventional notebook:
+  - OS Name: Ubuntu 20.04.1 LTS (64 bits)
+  - Julia Version: 1.5.2
+  - GCC Version: gcc (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0
   - Memory: 7.6 GiB
   - Processor: Intel® Core™ i5-8250U CPU @ 1.60GHz × 8 
-  - OS Name: Ubuntu 20.04.1 LTS (64 bits)
   - Disk Capacity: 256.1 GB
 
-## Results
+### Results
 
 <p align="center">
 <img aling="center" src="diffusion_parallel_julia-vs-c_time.svg" alt="diffusion_parallel_julia-vs-c_time" width="400"/>
 <img aling="center" src="diffusion_parallel_julia-vs-c_speedup.svg" alt="diffusion_parallel_julia-vs-c_speedup" width="400"/>
+<img aling="center" src="diffusion-on-a-plate.png" alt="diffusion-on-a-plate" width="400"/>
 </p>
 
-TODO: draw error bars
+Note: the heatmap figure was computed using 100000 convergence iterations
+
+
+## Case 2: TODO

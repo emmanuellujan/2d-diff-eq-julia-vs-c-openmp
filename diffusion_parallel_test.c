@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <time.h>
 #include <omp.h>
+#include <math.h>
 
 /*******************************************************************************
 *   In this simple code a 2D stationary diffusion equation is solved using
 *   the finite difference method
 *
-*   Equation: d2u/x2 + d2u/y2 = 0
+*   Equation: d2u/dx2 + d2u/dy2 = 0
 *
 *   Initial condition: u(t=0,x,y) = 0
 *
@@ -18,20 +19,24 @@
 *           u(t,x,y=1) = 0
 *
 *   How to run:
-*            export OMP_NUM_THREADS=4;
+*            export OMP_NUM_THREADS=8;
 *            gcc -o diffusion_parallel_test -fopenmp diffusion_parallel_test.c
-*            ./diffusion_parallel_test
+*            ./diffusion_parallel_test 100000 4000000
+*
+*           Note: first parameter is the number of convergence iterations
+*                 second parameter is the number of mesh nodes
 *
 *******************************************************************************/
 
-int main() 
+int main(int argc, char **argv) 
 {
+
     // No. of convergence iterations
-    int it_max = 100;
+    int it_max = atoi(argv[1]);
 
     // No. of spatial domain nodes
-    int n = 2500;
-    
+    int n = (int) (sqrt(atof(argv[2])));
+
     // Define dependent variable (e.g. Temperature)
     double * u = malloc(n*n*sizeof(double));
 

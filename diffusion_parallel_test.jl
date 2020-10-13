@@ -4,7 +4,7 @@ using .Threads
 #   In this simple code a 2D stationary diffusion equation is solved using
 #   the finite difference method
 #
-#   Equation: d2u/x2 + d2u/y2 = 0
+#   Equation: d2u/dx2 + d2u/dy2 = 0
 #
 #   Initial condition: u(t=0,x,y) = 0
 #            
@@ -15,11 +15,13 @@ using .Threads
 #           u(t,x,y=1) = 0
 #
 #   How to run:
-#           export JULIA_NUM_THREADS=4;
-#           julia diffusion_parallel_test.jl
+#           export JULIA_NUM_THREADS=8;
+#           julia diffusion_parallel_test.jl 100000 4000000
+#
+#           Note: first parameter is the number of convergence iterations
+#                 second parameter is the number of mesh nodes
 #
 ################################################################################
-
 
 function solve_diff!(u,n,it_max)
     for k = 1:it_max
@@ -32,10 +34,10 @@ function solve_diff!(u,n,it_max)
 end
 
 # No. of convergence iterations
-it_max = 100
+it_max = parse(Int,ARGS[1])
 
 # No. of spatial domain nodes
-n = 2500
+n = floor(Int,sqrt(parse(Int,ARGS[2])))
 
 # Set initial conditions
 u = zeros(n,n)
@@ -48,6 +50,10 @@ t = @elapsed solve_diff!(u,n,it_max)
 
 println(t)
 
-#using Plots
-#heatmap(u)
-#savefig("test.png")
+filename = "diffusion-on-a-plate.png"
+if !isfile(filename)
+    using Plots
+    heatmap(u)
+    savefig(filename)
+end
+

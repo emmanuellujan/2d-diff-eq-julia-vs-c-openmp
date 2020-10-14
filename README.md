@@ -76,14 +76,19 @@ These experiments were executed on a conventional notebook:
 
 ### Results
 
+The following figures show the time (left) and speedup (right) obtained by both implementations, for different number of threads.
 <p align="center">
 <img aling="center" src="diffusion_parallel_julia-vs-c_time.svg" alt="diffusion_parallel_julia-vs-c_time" width="400"/>
 <img aling="center" src="diffusion_parallel_julia-vs-c_speedup.svg" alt="diffusion_parallel_julia-vs-c_speedup" width="400"/>
+</p>
+
+The following figures show the obtained ``u`` distribution over the 2D domain (left), computed using 200000 convergence iterations instead of 100, and the neglected difference between the outcomes of both implementations (right).
+
+time and speedup obtained by both implementations for different number of threads.
+<p align="center">
 <img aling="center" src="heatmap-julia.png" alt="heatmap-julia" width="400"/>
 <img aling="center" src="heatmap-diff.png" alt="heatmap-diff" width="400"/>
 </p>
-
-<sup>Note: the heatmap figure was computed using 500000 convergence iterations instead of 100.</sup>
 
 
 ## Case 2: TODO

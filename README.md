@@ -84,7 +84,6 @@ The following figures show the time (left) and speedup (right) obtained by both 
 
 The following figures show the obtained ``u`` distribution over the 2D domain (left), computed using 200000 convergence iterations instead of 100, and the neglected difference between the outcomes of both implementations (right).
 
-time and speedup obtained by both implementations for different number of threads.
 <p align="center">
 <img aling="center" src="heatmap-julia.png" alt="heatmap-julia" width="400"/>
 <img aling="center" src="heatmap-diff.png" alt="heatmap-diff" width="400"/>

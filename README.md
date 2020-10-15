@@ -43,7 +43,7 @@ Giving rise to stencil computations, which are conceptually simple to implement 
               u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
   ```
 
-Unfortunately, looping implementations suffer from poor cache performance. Cache-oblivious divide-and-conquer stencil codes are much more efficient, but they are difficult to write (see http://supertech.csail.mit.edu/papers/pochoir_spaa11.pdf). 
+Unfortunately, looping implementations suffer from poor cache performance. Cache-oblivious divide-and-conquer stencil codes are much more efficient, but also hard to write (see http://supertech.csail.mit.edu/papers/pochoir_spaa11.pdf), in this case a simple looping implementation is analyzed.
 
 ## How to run
 

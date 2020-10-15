@@ -4,13 +4,22 @@ In this simple code a 2D stationary diffusion equation is solved using the finit
 
 Time and Speedup are calculated using a Julia implementation and a C/OpenMP implementation.
 
-## Mathematical problem
+## Mathematical model
 
 - Equation: d2u/dx2 + d2u/dy2 = 0
 - Initial condition: u(t=0,x,y) = 0
 - Boundary conditions: u(t,x=0,y) = 0, u(t,x=1,y) = 0, u(t,x,y=0) = 1, u(t,x,y=1) = 0
-  
-## Snippets of the parallel region
+
+## Computational Model
+
+A simple finite difference discretization using uniform mesh was used. The constant stencil can be represented as
+```
+0  1  0
+1 -4  1
+0  1  0
+```
+
+Giving rise to stencil computations, which are conceptually simple to implement using nested loops. The following snippets show the parallel stencil computations of the present code.
 
 - Julia:
 
@@ -33,6 +42,8 @@ Time and Speedup are calculated using a Julia implementation and a C/OpenMP impl
           for(int j=1;j<n-1;j++)         
               u[i*n+j] = (u[(i+1)*n+j]+u[(i-1)*n+j]+u[i*n+j+1]+u[i*n+j-1])/4.0;
   ```
+
+Unfortunately, looping implementations suffer from poor cache performance. Cache-oblivious divide-and-conquer stencil codes are much more efficient, but they are difficult to write (see http://supertech.csail.mit.edu/papers/pochoir_spaa11.pdf). 
 
 ## How to run
 

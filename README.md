@@ -100,5 +100,3 @@ The following figures show the obtained ``u`` distribution over the 2D domain (l
 <img aling="center" src="heatmap-diff.png" alt="heatmap-diff" width="400"/>
 </p>
 
-
-## Case 2: TODO
